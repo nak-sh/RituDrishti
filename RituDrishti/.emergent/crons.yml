@@ -1,0 +1,8 @@
+crons:
+  - name: daily-verification
+    description: "Verifies synthetic forecast outcomes and updates the online calibration audit"
+    cron: "30 1 * * *"
+    endpoint: "{{BASE_URL}}/api/cron/verify"
+    method: POST
+    # Cron endpoints must ack 2xx immediately; enqueue/background the actual work.
+    enabled: true

@@ -1,0 +1,20 @@
+{
+  "source": "NIC BharatMap, Government of India",
+  "url": "https://mapservice.gov.in/gismapservice/rest/services/BharatMapService/Admin_Boundary_District/MapServer/0",
+  "retrieved": "2026-09-30",
+  "state_ut_count": 36,
+  "query_simplification_degrees": 0.025,
+  "coverage_probes": {
+    "Gilgit-Baltistan": true,
+    "PoK": true,
+    "Aksai Chin": true,
+    "Arunachal Pradesh": true
+  },
+  "extent": [
+    68.184,
+    6.753,
+    97.413,
+    37.088
+  ],
+  "notes": "Government-hosted source; international outline not edited. Metadata description is older than the returned geometry (which includes Ladakh). Probe checks and visual inspection are not Survey of India certification. Regional grouping is illustrative; all Maharashtra is grouped with Konkan, and islands with East Coast. Sea areas are illustrative forecast boxes, not maritime boundaries. TLS certificate-chain verification was unavailable in build environment; retrieval used a public government endpoint with that transport check disabled."
+}

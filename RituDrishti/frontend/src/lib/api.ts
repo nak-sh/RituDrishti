@@ -1,0 +1,6 @@
+import {useEffect,useState} from 'react';
+export const API=process.env.REACT_APP_BACKEND_URL+'/api';
+export async function request(path:string,options?:RequestInit){const r=await fetch(API+path,options);if(!r.ok){const e=await r.json().catch(()=>({}));throw new Error(typeof e.detail==='string'?e.detail:`Request failed (${r.status}). Please try again.`)}return r.json()}
+export function useApi(path:string|null){const [data,setData]=useState<any>(null),[error,setError]=useState(''),[loading,setLoading]=useState(true),[revision,setRevision]=useState(0);useEffect(()=>{if(!path){setLoading(false);return}const c=new AbortController();setLoading(true);setError('');request(path,{signal:c.signal}).then(d=>{setData(d);setLoading(false)}).catch(e=>{if(e.name!=='AbortError'){setError(e.message);setLoading(false)}});return()=>c.abort()},[path,revision]);return {data,error,loading,retry:()=>setRevision(x=>x+1)}}
+export const query=(data:Record<string,any>)=>new URLSearchParams(Object.fromEntries(Object.entries(data).filter(([_,v])=>v!==null&&v!==undefined))).toString();
+export const pct=(v:number)=>`${(v*100).toFixed(1)}%`;
